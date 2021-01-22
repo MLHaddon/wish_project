@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stats</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+  <div class="header">
+    <h2>Hello, {{user.first_name}}. Here are your stats!</h2>
+    <div class="links">
+      <a href="/wishes">Dashboard</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+  <div class="main_body">
+    <h3>Total wishes granted so far for all users: {{total}}</h3>
+    <div>Your granted wishes: {{my_granted}}</div>
+    <div>Your pending wishes: {{my_pending}}</div>
+  </div>
+</body>
+</html>

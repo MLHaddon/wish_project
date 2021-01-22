@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make a Wish</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+  <div class="header">
+    <h2>Hello, {{user.first_name}}. Make a Wish!</h2>
+    <div class="links">
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+  <div class="main_body">
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="form">
+      <form action="/wishes/make_wish" method="post">
+      {% csrf_token %}
+      <div>I Wish For <input type="text" name="item"></div>
+      <div>Description <input type="text" name="desc"></div>
+      <button disabled="disabled"><a href="/wishes">Cancel</a></button>
+      <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
